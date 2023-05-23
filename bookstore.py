@@ -22,7 +22,7 @@ class Book:
 
 class Bookstore:
     def __init__(self):
-        self.books_count = random.randrange(10, 100)
+        self.books_count = random.randrange(5, 10)
         self.books = []
         for i in range(self.books_count):
             title = "Book " + str(i)
@@ -30,9 +30,13 @@ class Bookstore:
             genre = random.choice(['Fantastic', 'Fantasy', 'Manga'])
             self.books.append(Book(title, price, genre))
 
+    def catalog(self):
+        print("Total number of books: {:d}".format(store.books_count))
+        for i in range(store.books_count):
+            print("#{:d}".format(i))
+            print(store.books[i]);
+            print()
+
 store = Bookstore()
 
-print(store.books_count);
-for i in range(store.books_count):
-    print(store.books[i]);
-    print()
+store.catalog()
