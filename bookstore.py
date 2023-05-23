@@ -14,6 +14,14 @@ class TDD(unittest.TestCase):
         self.assertEqual(store.add_to_cart(11), "Bookstore doesn't have so much books!")
         self.assertEqual(store.add_to_cart(-1), "Only books numbers are allowed!")
 
+    def test_remove_from_cart(self):
+        self.assertEqual(store.remove_from_cart(5), "There aren't any books in the cart!")
+        store.ad_to_cart(4)
+        self.assertEqual(store.remove_from_cart(5), "There isn't that book in the cart!")
+        store.ad_to_cart(0)
+        self.assertEqual(store.remove_from_cart(0), "Book 0 removed")
+
+
 class Book:
     def __init__(self, title, price, genre):
         self.title = title
