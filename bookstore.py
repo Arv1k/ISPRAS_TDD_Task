@@ -39,6 +39,7 @@ class Bookstore:
             price = random.randrange(100, 1000)
             genre = random.choice(['Fantastic', 'Fantasy', 'Manga'])
             self.books.append(Book(title, price, genre))
+        self.cart = []
 
     def catalog(self):
         print("Total number of books: {:d}".format(store.books_count))
@@ -46,6 +47,17 @@ class Bookstore:
             print("#{:d}".format(i))
             print(store.books[i]);
             print()
+
+    def order(self, id):
+        if (id > 10):
+            print("Bookstore doesn't have so much books!")
+            return "Bookstore doesn't have so much books!"
+        elif (id < 0):
+            print("Only books numbers are allowed!")
+            return "Only books numbers are allowed!"
+
+        self.cart.append(self.books[id])
+        return self.books[id].title
 
 store = Bookstore()
 
