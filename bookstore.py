@@ -8,11 +8,11 @@ import cProfile
 
 
 class TDD(unittest.TestCase):
-    def test_ad_to_cart(self):
-        self.assertEqual(store.ad_to_cart(0), "Book 0")
-        self.assertEqual(store.ad_to_cart(5), "Book 5")
-        self.assertEqual(store.ad_to_cart(11), "Bookstore doesn't have so much books!")
-        self.assertEqual(store.ad_to_cart(-1), "Only books numbers are allowed!")
+    def test_add_to_cart(self):
+        self.assertEqual(store.add_to_cart(0), "Book 0 added")
+        self.assertEqual(store.add_to_cart(4), "Book 4 added")
+        self.assertEqual(store.add_to_cart(11), "Bookstore doesn't have so much books!")
+        self.assertEqual(store.add_to_cart(-1), "Only books numbers are allowed!")
 
 class Book:
     def __init__(self, title, price, genre):
@@ -48,7 +48,7 @@ class Bookstore:
             print(store.books[i]);
             print()
 
-    def ad_to_cart(self, id):
+    def add_to_cart(self, id):
         if (id > 10):
             print("Bookstore doesn't have so much books!")
             return "Bookstore doesn't have so much books!"
@@ -57,7 +57,10 @@ class Bookstore:
             return "Only books numbers are allowed!"
 
         self.cart.append(self.books[id])
-        return self.books[id].title
+
+        print(self.books[id].title + " added")
+
+        return self.books[id].title + " added"
 
 store = Bookstore()
 
