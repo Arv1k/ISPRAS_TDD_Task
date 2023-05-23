@@ -3,6 +3,16 @@ Bookstore fot ISPRAS TDD task
 """
 
 import random
+import unittest
+import cProfile
+
+
+class TDD(unittest.TestCase):
+    def test_order(self):
+        self.assertEqual(store.order(0), "Book 0")
+        self.assertEqual(store.order(5), "Book 5")
+        self.assertEqual(store.order(11), "Bookstore doesn't have so much books!")
+        self.assertEqual(store.order(-1), "Only books numbers are allowed!")
 
 class Book:
     def __init__(self, title, price, genre):
@@ -40,3 +50,5 @@ class Bookstore:
 store = Bookstore()
 
 store.catalog()
+
+unittest.main()
