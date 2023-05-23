@@ -8,22 +8,23 @@ import cProfile
 
 
 class TDD(unittest.TestCase):
-    def test_add_to_cart(self):
+    def test_0_add_to_cart(self):
         self.assertEqual(store.add_to_cart(0), "Book 0 added")
         self.assertEqual(store.add_to_cart(4), "Book 4 added")
         self.assertEqual(store.add_to_cart(11), "Bookstore doesn't have so much books!")
         self.assertEqual(store.add_to_cart(-1), "Only books numbers are allowed!")
 
-    def test_remove_from_cart(self):
+    def test_1_remove_from_cart(self):
         self.assertEqual(store.remove_from_cart(0), "Book 0 removed")
         self.assertEqual(store.remove_from_cart(4), "Book 4 removed")
-        self.assertEqual(store.remove_from_cart(5), "There aren't any books in the cart!")
+        self.assertEqual(store.remove_from_cart(1), "There aren't any books in the cart!")
         store.add_to_cart(4)
-        self.assertEqual(store.remove_from_cart(5), "There isn't that book in the cart!")
+        self.assertEqual(store.remove_from_cart(1), "There isn't that book in the cart!")
         store.add_to_cart(0)
         self.assertEqual(store.remove_from_cart(0), "Book 0 removed")
 
-    def test_check_sale:
+    def test_2_check_sale(self):
+        print(len(store.cart))
         store.add_to_cart(0)
         self.assertEqual(store.check_sale(), "2%")
         store.add_to_cart(1)
