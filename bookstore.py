@@ -25,20 +25,22 @@ class TDD(unittest.TestCase):
 
 
 class Book:
-    def __init__(self, title, price, genre):
+    def __init__(self, title, price, genre, id):
         self.title = title
         self.price = price
         self.genre = genre
+        self.id    = id
 
     def __repr__(self):
-        return "{:s} : {:d} : {:s}".format(self.title, self.price, self.genre)
+        return "{:d} : {:s} : {:d} : {:s}".format(self.id, self.title, self.price, self.genre)
 
     def __str__(self):
+        id    = "#{:d}".format(self.id)
         title = "Title: " + self.title
         price = "Price: {:d}".format(self.price)
         genre = "Genre: " + self.genre
 
-        return title + '\n' + price + '\n' + genre
+        return id + '\n' + title + '\n' + price + '\n' + genre
 
 class Bookstore:
     def __init__(self):
@@ -48,13 +50,12 @@ class Bookstore:
             title = "Book " + str(i)
             price = random.randrange(100, 1000)
             genre = random.choice(['Fantastic', 'Fantasy', 'Manga'])
-            self.books.append(Book(title, price, genre))
+            self.books.append(Book(title, price, genre, i))
         self.cart = []
 
     def catalog(self):
         print("Total number of books: {:d}".format(store.books_count))
         for i in range(store.books_count):
-            print("#{:d}".format(i))
             print(store.books[i]);
             print()
 
@@ -72,8 +73,24 @@ class Bookstore:
 
         return self.books[id].title + " added"
 
-store = Bookstore()
+    def remove_from_cart(self, id):
+        if len(self.cart) == 0:
+            print("There aren't any books in the cart!")
+            return "There aren't any books in the cart!"
 
-store.catalog()
+        for i in range(len(self.cart)):
+            if self.cart[i].id == id:
+                del self.cart[i]
+
+                print("Book {:d} removed".format(id))
+
+                return "Book {:d} removed".format(id)
+
+        print("There isn't that book in the cart!")
+
+        return "There isn't that book in the cart!"
+
+
+store = Bookstore()
 
 unittest.main()
