@@ -106,6 +106,31 @@ class Bookstore:
 
         return "There isn't that book in the cart!"
 
+    def check_sale(self):
+        if len(self.cart) == 2:
+            print("2%")
+
+            return "2%"
+
+        elif len(self.cart) == 3:
+            print("3%")
+
+            return "3%"
+
+        elif len(self.cart) == 4:
+            print("4%")
+
+            return "4%"
+
+        elif len(self.cart) == 5:
+            print("5%")
+
+            return "5%"
+
+        else:
+            print("0%")
+
+            return "0%"
 
 store = Bookstore()
 
