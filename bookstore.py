@@ -4,7 +4,6 @@ Bookstore fot ISPRAS TDD task
 
 import random
 import unittest
-import cProfile
 
 
 class TDD(unittest.TestCase):
@@ -45,18 +44,19 @@ class Book:
         self.title = title
         self.price = price
         self.genre = genre
-        self.id    = id
+        self.id = id
 
     def __repr__(self):
         return "{:d} : {:s} : {:d} : {:s}".format(self.id, self.title, self.price, self.genre)
 
     def __str__(self):
-        id    = "#{:d}".format(self.id)
+        id = "#{:d}".format(self.id)
         title = "Title: " + self.title
         price = "Price: {:d}".format(self.price)
         genre = "Genre: " + self.genre
 
         return id + '\n' + title + '\n' + price + '\n' + genre
+
 
 class Bookstore:
     def __init__(self):
@@ -72,7 +72,7 @@ class Bookstore:
     def catalog(self):
         print("Total number of books: {:d}".format(store.books_count))
         for i in range(store.books_count):
-            print(store.books[i]);
+            print(store.books[i])
             print()
 
     def add_to_cart(self, id):
@@ -131,6 +131,7 @@ class Bookstore:
             print("0%")
 
             return "0%"
+
 
 store = Bookstore()
 
