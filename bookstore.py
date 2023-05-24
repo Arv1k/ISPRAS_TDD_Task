@@ -23,7 +23,6 @@ class TDD(unittest.TestCase):
         self.assertEqual(store.remove_from_cart(0), "Book 0 removed")
 
     def test_2_check_sale(self):
-        print(len(store.cart))
         store.add_to_cart(0)
         self.assertEqual(store.check_sale(), "2%")
         store.add_to_cart(1)
@@ -37,6 +36,9 @@ class TDD(unittest.TestCase):
         store.remove_from_cart(2)
         store.remove_from_cart(1)
         self.assertEqual(store.check_sale(), "0%")
+
+    def test_3_catalog(self):
+        self.assertEqual(store.catalog(), 1)
 
 
 class Book:
