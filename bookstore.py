@@ -48,9 +48,6 @@ class Book:
         self.genre = genre
         self.id = id
 
-    def __repr__(self):
-        return "{:d} : {:s} : {:d} : {:s}".format(self.id, self.title, self.price, self.genre)
-
     def __str__(self):
         id = "#{:d}".format(self.id)
         title = "Title: " + self.title
@@ -76,6 +73,8 @@ class Bookstore:
         for i in range(store.books_count):
             print(store.books[i])
             print()
+
+        return 1
 
     def add_to_cart(self, id):
         if (id > 10):
